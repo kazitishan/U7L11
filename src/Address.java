@@ -26,8 +26,20 @@ public class Address {
     // takes in an Address as a full String, breaks up the information, and copies into the fields
     public Address(String address){
         streetNumber = address.substring(0, address.indexOf(" "));
-        address = address.substring(address.indexOf(" ") - 1);
-        streetName =
+        address = address.substring(address.indexOf(" ") + 1);
+        streetName = address.substring(0, address.indexOf(" "));
+        address = address.substring(address.indexOf(" "));
+        streetName += address.substring(0, address.indexOf(" "));
+        if (address.substring(0, address.indexOf(" ")).equals("Apt")){
+            aptNumber = address.substring(0, address.indexOf(" "));
+            address = address = address.substring(address.indexOf(" ") + 1);
+            aptNumber += address.substring(0, address.indexOf(","));
+        }
+        else {
+            aptNumber = null;
+
+        }
+
     }
 
     public String getStreetNumber() {
